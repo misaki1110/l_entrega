@@ -1,0 +1,109 @@
+<odoo>
+  <data>
+    <record id="lugarentrega_modelo_tree" model="ir.ui.view">
+      <field name="name">lugarentrega.modelo.tree</field>
+      <field name="model">lugarentrega.modelo</field>
+        <field name="arch" type="xml">
+          <tree string="Listado de Lugar de entrega">
+            <field name="name" string="Descripción"/>
+            <field name="direccion" string="Dirección" groups="prosystemperu_lentrega_crea.group_aparece_entrega"/>
+            <field name="referencia" string="Referencia" groups="prosystemperu_lentrega_crea.group_aparece_entrega"/>
+            <field name="company_id" string="Compañia" groups="base.group_multi_company" options="{'no_create': True}"/>
+          </tree>
+        </field>
+    </record>
+  <!-- vamos a grabar datos -->
+    <record id="lugarentrega_modelo_form" model="ir.ui.view">
+      <field name="name">lugarentrega.modelo.form</field>
+      <field name="model">lugarentrega.modelo</field>
+        <field name="arch" type="xml">
+          <form string="Formulario de Lugares de entrega" version="10.0">
+            <!-- Cuerpo -->
+            <sheet>
+            <group>              
+              <field name="name" placeholder="Descripción" required="1" string="Descripción"/>
+              <field name="direccion" string="Dirección" groups="prosystemperu_lentrega_crea.group_aparece_entrega"/>
+              <field name="referencia" string="Referencia" groups="prosystemperu_lentrega_crea.group_aparece_entrega"/>
+              <field name="company_id" string="Compañia" groups="base.group_multi_company" options="{'no_create': True}"/>       
+            </group>
+            </sheet>
+          </form>
+        </field>
+    </record>
+
+    <!-- Definimos los eventos -->
+    <record id="lugarentrega_modelo_action" model="ir.actions.act_window">
+      <field name="name">Lugar</field>
+      <field name="res_model">lugarentrega.modelo</field>
+      <field name="view_type">form</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- Definimos los menu -->
+   <!-- <menuitem id="lugarentrega_modelo_menu" name="Lugar de Entrega"/> -->
+   <!-- <menuitem id="lugarentrega_modelo_submenu" name="Entrega" parent="lugarentrega_modelo_menu" sequence="0"/> -->
+   
+
+
+    <!-- Enlazamos la accion al sub menu -->
+    <menuitem id="lugar_modelo_menu_action" name="Lugar de entrega" parent="purchase.menu_purchase_config" sequence="0" action="lugarentrega_modelo_action"/>
+
+
+
+    <!-- explicit list view definition -->
+    <!--
+    <record model="ir.ui.view" id="nombremodulo.list">
+      <field name="name">nombremodulo list</field>
+      <field name="model">nombremodulo.nombremodulo</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+          <field name="value"/>
+          <field name="value2"/>
+        </tree>
+      </field>
+    </record>
+    -->
+
+    <!-- actions opening views on models -->
+    <!--
+    <record model="ir.actions.act_window" id="nombremodulo.action_window">
+      <field name="name">nombremodulo window</field>
+      <field name="res_model">nombremodulo.nombremodulo</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+    -->
+
+    <!-- server action to the one above -->
+    <!--
+    <record model="ir.actions.server" id="nombremodulo.action_server">
+      <field name="name">nombremodulo server</field>
+      <field name="model_id" ref="model_nombremodulo_nombremodulo"/>
+      <field name="code">
+        action = {
+          "type": "ir.actions.act_window",
+          "view_mode": "tree,form",
+          "res_model": self._name,
+        }
+      </field>
+    </record>
+    -->
+
+    <!-- Top menu item -->
+    <!--
+    <menuitem name="nombremodulo" id="nombremodulo.menu_root"/>
+    -->
+    <!-- menu categories -->
+    <!--
+    <menuitem name="Menu 1" id="nombremodulo.menu_1" parent="nombremodulo.menu_root"/>
+    <menuitem name="Menu 2" id="nombremodulo.menu_2" parent="nombremodulo.menu_root"/>
+    -->
+    <!-- actions -->
+    <!--
+    <menuitem name="List" id="nombremodulo.menu_1_list" parent="nombremodulo.menu_1"
+              action="nombremodulo.action_window"/>
+    <menuitem name="Server to list" id="nombremodulo" parent="nombremodulo.menu_2"
+              action="nombremodulo.action_server"/>
+    -->
+  </data>
+</odoo>

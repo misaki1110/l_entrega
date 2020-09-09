@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<odoo>
+    <data>
+		<record model="res.groups" id="group_aparece_entrega">
+		    <field name="name">Aparezca mis campos</field>
+		    <field name="category_id" ref="base.module_category_usability"/>
+		</record>		
+	</data>
+</odoo>
